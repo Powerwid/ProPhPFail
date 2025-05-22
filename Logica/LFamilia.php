@@ -1,14 +1,14 @@
 <?php 
     require '../Datos/DB.php';
-    require '../Entidades/Familia.php';
+    require '../Interfaces/IFamilia.php';
     class LFamilia implements IFamilia{
         public function guardar (Familia $familia){
             $db=new DB();
             $cn=$db->conectar();
             $sql="insert into familia (nombre,descripcion) values (:nom,:des)";
             $ps=$cn->prepare($sql);
-            $ps->bindValue(':nom',$familia->getNombre());
-            $ps->bindValue(':des',$familia->getDescripcion());
+            $ps->bindParam(':nom',$familia->getNombre());
+            $ps->bindParam(':des',$familia->getDescripcion());
             $ps->execute();
 
         }
@@ -27,7 +27,7 @@
                 $fam->setDescripcion($f[2]);
                 array_push($familia,$fam);
             }
-            return $familia;
+            return $familias;
         }
     }
 

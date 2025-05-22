@@ -1,6 +1,6 @@
 <?php 
     require_once '../Entidades/Familia.php';
-    interface IFamiliañ{
+    interface IFamilia{
         public function guardar(Familia $familia);
         public function cargar();
 

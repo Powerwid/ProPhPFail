@@ -1,6 +1,6 @@
 <?php 
     class DB {
-        private $url = 'pgsql:host=Localhost:dbname=ventasdb';
+        private $url = 'pgsql:host=localhost:dbname=ventasdb';
         private $user= 'postgres';
         private $password = '123';
 
