@@ -1,14 +1,15 @@
 <?php
-    // Usa require_once para evitar inclusiones múltiples
-    $basePath = 'C:\\Users\\mandarina\\Documents\\Proyecto\\BACKEND DEVELOPER WEB\\Semana_2\\ProPhPFail\\';
-    $proveedorPath = $basePath . 'Entidades\\Proveedor.php';
-    $interfacePath = $basePath . 'Interfaces\\IProveedor.php';
-    $dbPath = $basePath . 'Datos\\DB.php';
+    // Configurando la ruta base para apuntar solo a ProPhPFail\Entidades\
+    $basePath = __DIR__ . '/../../ProPhPFail/Entidades/'; // Ajustado para apuntar a ProPhPFail\Entidades\
+    $proveedorPath = $basePath . 'Proveedor.php';
+    $interfacePath = __DIR__ . '/../../ProPhPFail/Interfaces/IProveedor.php'; // Ajustado para Interfaces
+    $dbPath = __DIR__ . '/../../ProPhPFail/Datos/DB.php'; // Ajustado para Datos
 
+    // Depuración
     if (!file_exists($proveedorPath)) {
         die("Error: No se encontró el archivo Proveedor.php en $proveedorPath");
     }
-    require_once $proveedorPath; // Cambia a require_once
+    require_once $proveedorPath;
 
     if (!file_exists($interfacePath)) {
         die("Error: No se encontró el archivo IProveedor.php en $interfacePath");

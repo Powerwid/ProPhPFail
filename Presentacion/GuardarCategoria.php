@@ -17,20 +17,12 @@
 <head>
     <title>Guardar Categoria</title>
     <style>
-        form {
-            width: 50%;
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        label, input {
-            display: block;
-            margin: 10px 0;
-        }
-        input[type="submit"] {
-            margin-top: 20px;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+        th { background-color: #f4f4f4; }
+        .btn { background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 3px; }
+        .btn:hover { background-color: #0056b3; }
     </style>
 </head>
 <body>
@@ -42,7 +34,7 @@
         <input type="number" id="idfamilia" name="idfamilia" required>
         <input type="submit" value="Guardar">
     </form>
-    <p><a href="CargarCategoria.php">Ver Categorias</a></p>
+    <p><a href="CargarCategoria.php" class="btn">Ver Categorias</a></p>
     
 </body>
 </html>

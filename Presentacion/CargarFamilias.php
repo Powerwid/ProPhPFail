@@ -7,19 +7,12 @@
 <head>
     <title>Familias</title>
     <style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+        th { background-color: #f4f4f4; }
+        .btn { background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 3px; }
+        .btn:hover { background-color: #0056b3; }
     </style>
 </head>
 <body>
@@ -40,6 +33,6 @@
             }
         ?>
     </table>
-    <p><a href="GuardarFamilias.php">Guardar Familia</a></p>
+    <p><a href="GuardarFamilias.php" class="btn">Guardar Familia</a></p>
 </body>
 </html>
