@@ -1,6 +1,7 @@
-<?php 
-    require_once '../Logica/LCategoria.php';
-    $log=new LCategoria();
+<?php
+require_once '../../Logica/Categoria/CategoriaController.php';
+$controller = new CategoriaController();
+$categorias = $controller->cargarCategorias();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,10 @@
         th { background-color: #f4f4f4; }
         .btn { background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 3px; }
         .btn:hover { background-color: #0056b3; }
+        .delete-btn { background-color: #dc3545; margin-right: 5px; }
+        .delete-btn:hover { background-color: #c82333; }
+        .edit-btn { background-color: #28a745; }
+        .edit-btn:hover { background-color: #218838; }
     </style>
 </head>
 <body>
@@ -22,13 +27,18 @@
             <th>ID Categoria</th>
             <th>Nombre</th>
             <th>ID Familia</th>
+            <th>Acciones</th>
         </tr>
-        <?php 
-            foreach($log->cargar() as $categoria) {
+        <?php
+            foreach ($categorias as $categoria) {
                 echo "<tr>";
                 echo "<td>" . $categoria->getIdcategoria() . "</td>";
                 echo "<td>" . $categoria->getNombre() . "</td>";
                 echo "<td>" . $categoria->getIdfamilia() . "</td>";
+                echo "<td>";
+                echo "<a href='ModificarCategoria.php?id=" . $categoria->getIdcategoria() . "' class='btn edit-btn'>Modificar</a>";
+                echo "<a href='BorrarCategoria.php?id=" . $categoria->getIdcategoria() . "' class='btn delete-btn' onclick=\"return confirm('¿Seguro que quieres borrar esta categoria?');\">Borrar</a>";
+                echo "</td>";
                 echo "</tr>";
             }
         ?>

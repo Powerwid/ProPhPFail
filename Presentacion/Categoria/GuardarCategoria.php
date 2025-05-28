@@ -1,16 +1,13 @@
-<?php 
-    require '../Logica/LCategoria.php';
+<?php
+require_once '../../Logica/Categoria/CategoriaController.php';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $cat = new Categoria();
-        $cat->setNombre($_POST['nombre']);
-        $cat->setIdfamilia($_POST['idfamilia']);
-        $log = new LCategoria();
-        $log->guardar($cat);
-        // Redirigir a la página de categorías después de guardar
-        header("Location: CargarCategoria.php");
-        exit(); // Siempre usa exit después de una redirección para detener la ejecución del script
-    }
+$controller = new CategoriaController();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $controller->guardarCategoria($_POST['nombre'], $_POST['idfamilia']);
+    header("Location: CargarCategoria.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,6 +32,5 @@
         <input type="submit" value="Guardar">
     </form>
     <p><a href="CargarCategoria.php" class="btn">Ver Categorias</a></p>
-    
 </body>
 </html>

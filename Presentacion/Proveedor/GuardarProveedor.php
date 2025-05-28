@@ -1,16 +1,12 @@
-<?php 
-    require_once '../Entidades/Proveedor.php'; // Cambia a require_once
-    require_once '../Logica/LProveedor.php'; // Usa require_once para LProveedor también
+<?php
+require_once '../../Logica/Proveedor/ProveedorController.php';
+$proveedorController = new ProveedorController();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $pro = new Proveedor();
-        $pro->setNombre($_POST['nombre']);
-        $pro->setRuc($_POST['ruc']);
-        $log = new LProveedor();
-        $log->guardar($pro);
-        header("Location: http://localhost:3000/Presentacion/CargarProveedor.php");
-        exit();
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $proveedorController->guardarProveedor($_POST['nombre'], $_POST['ruc']);
+    header("Location: CargarProveedor.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +30,6 @@
         <input type="text" id="ruc" name="ruc" required>
         <input type="submit" value="Guardar">
     </form>
-    <p><a href="http://localhost:3000/Presentacion/CargarProveedor.php" class="btn">Ver Proveedores</a></p>
+    <p><a href="CargarProveedor.php" class="btn">Ver Proveedores</a></p>
 </body>
 </html>

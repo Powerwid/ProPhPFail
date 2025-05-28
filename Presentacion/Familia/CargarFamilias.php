@@ -1,6 +1,8 @@
-<?php 
-    require '../Logica/LFamilia.php';
-    $log = new LFamilia();
+<?php
+require_once '../../Logica/Familia/FamiliaController.php';
+
+$controller = new FamiliaController();
+$familias = $controller->cargarFamilias();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +15,10 @@
         th { background-color: #f4f4f4; }
         .btn { background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 3px; }
         .btn:hover { background-color: #0056b3; }
+        .delete-btn { background-color: #dc3545; margin-right: 5px; }
+        .delete-btn:hover { background-color: #c82333; }
+        .edit-btn { background-color: #28a745; }
+        .edit-btn:hover { background-color: #218838; }
     </style>
 </head>
 <body>
@@ -22,13 +28,18 @@
             <th>ID Familia</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Acciones</th>
         </tr>
         <?php 
-            foreach($log->cargar() as $familia) {
+            foreach ($familias as $familia) {
                 echo "<tr>";
                 echo "<td>" . $familia->getIdFamilia() . "</td>";
                 echo "<td>" . $familia->getNombre() . "</td>";
                 echo "<td>" . $familia->getDescripcion() . "</td>";
+                echo "<td>";
+                echo "<a href='ModificarFamilias.php?id=" . $familia->getIdFamilia() . "' class='btn edit-btn'>Modificar</a>";
+                echo "<a href='BorrarFamilias.php?id=" . $familia->getIdFamilia() . "' class='btn delete-btn' onclick=\"return confirm('¿Seguro que quieres borrar esta familia?');\">Borrar</a>";
+                echo "</td>";
                 echo "</tr>";
             }
         ?>

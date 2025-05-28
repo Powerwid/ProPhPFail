@@ -1,16 +1,13 @@
 <?php
-    require '../Logica/LFamilia.php';
+require_once '../../Logica/Familia/FamiliaController.php';
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $fam = new Familia();
-        $fam->setNombre($_POST['nombre']);
-        $fam->setDescripcion($_POST['descripcion']);
-        $log = new LFamilia();
-        $log->guardar($fam);
-        // Redirigir a CargarFamilias.php después de guardar
-        header("Location: CargarFamilias.php");
-        exit(); // Siempre usa exit después de una redirección para detener la ejecución del script
-    }
+$controller = new FamiliaController();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $controller->guardarFamilia($_POST['nombre'], $_POST['descripcion']);
+    header("Location: CargarFamilias.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
